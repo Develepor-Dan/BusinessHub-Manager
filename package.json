@@ -4,14 +4,13 @@
      "description": "A business owner is able to view and manage the departments, roles, and employees in their company.",
      "main": "index.js",
      "scripts": {
-       "start": "node index"
+          "start": "node index"
      },
      "author": "",
      "license": "ISC",
      "dependencies": {
-       "asciiart-logo": "^0.2.6",
-       "inquirer": "8.2.4",
-       "mysql2": "^2.1.0"
+          "asciiart-logo": "^0.2.6",
+          "inquirer": "8.2.4",
+          "mysql2": "^2.3.3"
      }
-   }
-   
+}
