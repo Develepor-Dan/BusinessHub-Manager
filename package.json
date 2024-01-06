@@ -1,5 +1,5 @@
 {
-     "name": "BusinessHub-Manager",
+     "name": "BusinessHubManager",
      "version": "1.0.0",
      "description": "A business owner is able to view and manage the departments, roles, and employees in their company.",
      "main": "index.js",
