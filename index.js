@@ -2,16 +2,9 @@ const { prompt } = require("inquirer");
 const logo = require("asciiart-logo");
 const db = require("./db");
 
-// Centralized prompt messages
-const prompts = {
-  departmentName: "What is the name of the department?",
-  // ... add other prompts
-};
-
-init();
-
+// Display logo text, load main prompts
 function init() {
-  const logoText = logo({ name: "Employee Manager" }).render();
+  const logoText = logo({ name: "Business Hub Manager" }).render();
   console.log(logoText);
   loadMainPrompts();
 }
@@ -23,46 +16,62 @@ function loadMainPrompts() {
       name: "choice",
       message: "What would you like to do?",
       choices: [
-        // ... choices
+        { name: "View All Employees", value: "VIEW_EMPLOYEES" },
+        { name: "View Employees by Department", value: "VIEW_EMPLOYEES_BY_DEPARTMENT" },
+        { name: "Add Employee", value: "ADD_EMPLOYEE" },
+        { name: "Remove Employee", value: "REMOVE_EMPLOYEE" },
+        { name: "Update Employee Role", value: "uPDATE_EMPLOYEE_ROLE" },
+        { name: "View All Roles", value: "VIEW_ALL_ROLES" },
+        { name: "Add Role", value: "ADD_ROLE" },
+        { name: "Remove Role", value: "REMOVE_ROLE" },
+        { name: "View All Departments", value: "VIEW_ALL_DEPARTMENTS" },
+        { name: "Add Department", value: "ADD_DEPARTMENT" },
+        { name: "Remove Department", value: "REMOVE_DEPARTMENT" },
+        { name: "Quit", value: "QUIT" },
       ],
     },
-  ]).then(handleUserChoice).catch(handleError);
+  ])
+    .then(handleUserChoice)
+    .catch(handleError)
+    .finally(loadMainPrompts);
 }
 
 function handleUserChoice(res) {
-  let choice = res.choice;
+  const choice = res.choice;
   switch (choice) {
     case "VIEW_EMPLOYEES":
       viewEmployees();
       break;
-    // ... handle other choices
-    default:
+    // Add other cases
+    case "QUIT":
       quit();
+      break;
+    default:
+      console.error("Invalid choice. Please try again.");
   }
 }
 
 function viewEmployees() {
   db.findAllEmployees()
     .then(([rows]) => {
-      let employees = rows;
+      const employees = rows;
       console.log("\n");
       console.table(employees);
     })
-    .then(loadMainPrompts)
-    .catch((error) => {
-      console.error("Error viewing employees:", error);
-      loadMainPrompts();
-    });
+    .catch(handleError);
 }
 
-// ... other functions
+// Add other functions with consistent error handling
 
 function handleError(error) {
   console.error("An unexpected error occurred:", error);
-  loadMainPrompts();
 }
 
 function quit() {
   console.log("Goodbye!");
   process.exit();
 }
+
+// Add other functions
+
+init();
