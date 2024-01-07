@@ -45,4 +45,4 @@ This project is licensed under the [None](https://opensource.org/licenses/None) 
 [GitHub Repository](https://github.com/Develepor-Dan/BusinessHub-Manager)
 
 ## Questions
-For questions about contribution about the project, please contact [Daniel Zavala](mailto:zavaladaniel151@gmail.com).
+For questions and contributions to the project, please contact [Daniel Zavala](mailto:zavaladaniel151@gmail.com).
