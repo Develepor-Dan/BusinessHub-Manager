@@ -32,8 +32,7 @@ function loadMainPrompts() {
     },
   ])
     .then(handleUserChoice)
-    .catch(handleError)
-    .finally(askForNextAction);
+    .catch(handleError);
 }
 
 function handleUserChoice(res) {
