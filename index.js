@@ -1,10 +1,10 @@
 const { prompt } = require("inquirer");
 const logo = require("asciiart-logo");
-const db = require("./db");
+const db = require("./DB");
 
 // Display logo text, load main prompts
 function init() {
-  const logoText = logo({ name: "Business Hub Manager" }).render();
+  const logoText = logo({ name: "Business Hub" }).render();
   console.log(logoText);
   loadMainPrompts();
 }
@@ -453,7 +453,5 @@ function quit() {
   console.log("Goodbye!");
   process.exit();
 }
-
-// Add other functions
 
 init();
